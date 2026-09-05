@@ -1,0 +1,25 @@
+# System-level (install yourself, not via npm)
+node >= 20
+npm >= 10
+ollama
+  model: llama3.2:3b
+docker + colima (optional)
+
+# npm dependencies
+next==16.3.4
+react==19.2.8
+react-dom==19.2.8
+idb==8.0.3
+framer-motion==13.2.0
+@codemirror/lang-cpp==6.0.3
+@uiw/react-codemirror==4.25.11
+
+# npm devDependencies
+typescript==5.*
+eslint==9.*
+eslint-config-next==16.3.4
+tailwindcss==4.*
+@tailwindcss/postcss==4.*
+@types/node==20.*
+@types/react==19.*
+@types/react-dom==19.*

@@ -1,0 +1,24 @@
+# OS junk
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+
+# Env files
+.env
+.env.local
+.env*.local
+
+# Node
+node_modules/
+npm-debug.log*
+
+PROGRESS.md
+
+# Logs
+*.log
