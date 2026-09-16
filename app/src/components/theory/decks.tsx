@@ -12,6 +12,10 @@ import {
   TwoPointersMoveVisual,
   TwoPointersConvergeVisual,
   TwoPointersDoneVisual,
+  SlidingWindowScanVisual,
+  SlidingWindowFixedVisual,
+  SlidingWindowGrowShrinkVisual,
+  SlidingWindowDoneVisual,
 } from "./visuals";
 
 // The seven-part note structure from the design plan (§17): Hook, Idea, Visual,
@@ -163,7 +167,59 @@ const twoPointersDeck: TheorySlide[] = [
   },
 ];
 
+const slidingWindowDeck: TheorySlide[] = [
+  {
+    kind: "hook",
+    title: "Do you need to re-sum every window?",
+    caption:
+      "You need the max sum of every 3 consecutive numbers. Recomputing the sum of each window from scratch redoes almost all the same work you just did one step ago.",
+    Visual: SlidingWindowScanVisual,
+  },
+  {
+    kind: "idea",
+    title: "Meet the sliding window",
+    caption:
+      "Keep a running total for the current window instead of re-adding everything. Moving it one step right only changes two elements: subtract the one that just left, add the one that just entered. Try it:",
+    Visual: SlidingWindowFixedVisual,
+  },
+  {
+    kind: "visual",
+    title: "When the window isn't fixed-size",
+    caption:
+      "Some problems don't use a fixed width — the window grows on the right, and only shrinks from the left when it breaks a rule (like hitting a repeated character). Step through it:",
+    Visual: SlidingWindowGrowShrinkVisual,
+  },
+  {
+    kind: "aha",
+    title: "Why this is O(n), not O(n·k)",
+    caption:
+      "Each element enters the window once and leaves at most once, so the whole scan costs O(n) total — not O(k) work repeated at every position.",
+    Visual: SlidingWindowDoneVisual,
+  },
+  {
+    kind: "pattern",
+    title: "When to reach for a sliding window",
+    caption:
+      "Whenever you're scanning a contiguous range of an array or string and only care about a running aggregate (sum, count, longest/shortest run) — that's the signal. Fixed size slides one step at a time; variable size grows and shrinks based on a condition.",
+  },
+  {
+    kind: "trap",
+    title: "The mistake almost everyone makes",
+    caption:
+      "Recomputing the window from scratch instead of adjusting it incrementally — that silently turns an O(n) solution back into O(n·k). For variable windows: restarting entirely on a violation instead of shrinking just past it.",
+  },
+  {
+    kind: "recall",
+    title: "Explain it back",
+    recallPrompt:
+      "In one sentence: why is sliding a window forward cheaper than recomputing it from scratch each time?",
+    caption:
+      "Only the element leaving and the element entering change the running total — everything else in the window was already accounted for, so each slide is O(1) instead of O(k).",
+  },
+];
+
 export const THEORY_DECKS: Partial<Record<Pattern, TheorySlide[]>> = {
   "hash-map": hashMapDeck,
   "two-pointers": twoPointersDeck,
+  "sliding-window": slidingWindowDeck,
 };

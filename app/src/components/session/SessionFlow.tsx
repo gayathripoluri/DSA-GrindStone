@@ -100,7 +100,7 @@ export function SessionFlow({ problem }: { problem: Problem }) {
         streak={journey.streak}
         whyThisProblem={
           journey.totalSolved === 0
-            ? "This is your first mission. Two Sum is the cleanest way to feel the whole loop — warm-up, interview, code, and an insight you'll actually remember."
+            ? "This is your first mission — solving it end to end (warm-up, interview, code, and an insight you'll actually remember) shows you the whole loop this app is built around."
             : "You've been building pattern recognition. Today's session sharpens exactly that, one small step at a time."
         }
         resumeAvailable={!!resumeCandidate}

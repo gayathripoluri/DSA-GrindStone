@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
+import { DictationTextarea } from "@/components/ui/DictationTextarea";
 import { KIND_LABEL, type TheorySlide } from "./decks";
 
 export function SlideDeckPlayer({
@@ -54,13 +55,14 @@ export function SlideDeckPlayer({
         {slide.kind === "recall" ? (
           <div className="mt-4 w-full text-left">
             <p className="text-sm text-text-dim">{slide.recallPrompt}</p>
-            <textarea
-              value={recallAnswer}
-              onChange={(e) => setRecallAnswer(e.target.value)}
-              placeholder="Type it in your own words..."
-              rows={2}
-              className="mt-3 w-full resize-none rounded-lg border border-border bg-surface-2 px-3 py-2 text-sm text-text placeholder:text-text-dim focus:border-accent focus:outline-none"
-            />
+            <div className="mt-3">
+              <DictationTextarea
+                value={recallAnswer}
+                onChange={setRecallAnswer}
+                placeholder="Type it in your own words, or tap the mic to say it..."
+                rows={2}
+              />
+            </div>
             {!recallRevealed ? (
               <button
                 onClick={() => setRecallRevealed(true)}

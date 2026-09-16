@@ -29,7 +29,7 @@ export const PATTERNS: PatternMeta[] = [
     id: "sliding-window",
     name: "Sliding Window",
     tagline: "Grow and shrink a range instead of re-scanning from scratch.",
-    hasTheory: false,
+    hasTheory: true,
   },
   {
     id: "binary-search",
